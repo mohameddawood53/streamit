@@ -788,7 +788,7 @@ form.comment-text input { padding-right: 130px; }
 .twit-date a { color: var(--iq-body-text); }
 
 /*---------------------------------------------------------------------
-Profile Edit 
+Profile Edit
 -----------------------------------------------------------------------*/
 .profile-pic { max-width: 100%; display: block; border-radius: 50%; -webkit-border-radius: 50%; }
 .profile-img-edit { position: relative; display: inline-block; height: 150px; width: 150px; }
@@ -867,3 +867,11 @@ Pricing Page
 .upload_profile { position: relative; }
 .child-cell.active { color: var(--iq-primary); }
 .iq-social ul li a { display: block; text-align: center; font-size: 16px; line-height: 43px; }
+
+body{
+    font-family: Cairo;
+}
+
+*{
+    font-family: Cairo;
+}

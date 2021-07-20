@@ -9,18 +9,28 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="{{asset("images/favicon.ico")}}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{asset("css/bootstrap.min.css")}}">
+    <!-- Typography CSS -->
+    <link rel="stylesheet" href="{{asset("css/typography.css")}}">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{{asset("css/style.css")}}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{{asset("css/responsive.css")}}">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>
+
 <body>
-    <div id="app">
+    <div id="app" style="font-family: Cairo">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -52,6 +62,7 @@
                                 </li>
                             @endif
                         @else
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -74,10 +85,39 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        <div id="loading">
+            <div id="loading-center">
+            </div>
+        </div>
+        <main style="font-family: Cairo">
             @yield('content')
         </main>
     </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset("js/jquery.min.js")}}"></script>
+    <script src="{{asset("js/popper.min.js")}}"></script>
+    <script src="{{asset("js/bootstrap.min.js")}}"></script>
+    <!-- Appear JavaScript -->
+    <script src="{{asset("js/jquery.appear.js")}}"></script>
+    <!-- Countdown JavaScript -->
+    <script src="{{asset("js/countdown.min.js")}}"></script>
+    <!-- Counterup JavaScript -->
+    <script src="{{asset("js/waypoints.min.js")}}"></script>
+    <script src="{{asset("js/jquery.counterup.min.js")}}"></script>
+    <!-- Wow JavaScript -->
+    <script src="{{asset("js/wow.min.js")}}"></script>
+    <!-- Slick JavaScript -->
+    <script src="{{asset("js/slick.min.js")}}"></script>
+    <!-- Owl Carousel JavaScript -->
+    <script src="{{asset("js/owl.carousel.min.js")}}"></script>
+    <!-- Magnific Popup JavaScript -->
+    <script src="{{asset("js/jquery.magnific-popup.min.js")}}"></script>
+    <!-- Smooth Scrollbar JavaScript -->
+    <script src="{{asset("js/smooth-scrollbar.js")}}"></script>
+    <!-- Chart Custom JavaScript -->
+    <script src="{{asset("js/chart-custom.js")}}}"></script>
+    <!-- Custom JavaScript -->
+    <script src="{{asset("js/custom.js")}}"></script>
 </body>
 </html>
