@@ -13,7 +13,7 @@
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
     <!-- Fonts -->
-    
+
     <link rel="shortcut icon" href="{{asset("images/favicon.ico")}}" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset("css/dash/bootstrap.min.css")}}">

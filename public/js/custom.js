@@ -1,5 +1,5 @@
 /*
-Template: Streamit - Responsive Bootstrap 4 Admin Dashboard Template
+Template: Streamit - Responsive Bootstrap 4 Template
 Author: iqonicthemes.in
 Design and Developed by: iqonicthemes.in
 NOTE: This file contains the styling for responsive Template.
@@ -9,722 +9,554 @@ NOTE: This file contains the styling for responsive Template.
 Index Of Script
 ------------------------------------------------
 
-:: Tooltip
-:: Magnific Popup
-:: Ripple Effect
-:: Sidebar Widget
-:: Page FAQ
-:: Page Loader
+:: Sticky Header Animation & Height
+:: Back to Top
+:: Header Menu Dropdown
+:: Slick Slider
 :: Owl Carousel
-:: Search input
-:: Scrollbar
-:: Counter
-:: slick
-:: Progress Bar
-:: Page Menu
-:: Wow Animation
-:: Form Validation
+:: Page Loader
+:: Mobile Menu Overlay
+:: Equal Height of Tab Pane
 :: Active Class for Pricing Table
+:: Select 2 Dropdown
+:: Video Popup
 :: Flatpicker
-:: Scroll up menu
-:: Checkout
-:: Datatables
-:: image-upload
-:: video
-:: button
+:: Custom File Uploader
 
 ------------------------------------------------
 Index Of Script
 ----------------------------------------------*/
 
-(function(jQuery) {
-
-
-
-    "use strict";
-
-    jQuery(document).ready(function() {
-
-        /*---------------------------------------------------------------------
-        Tooltip
-        -----------------------------------------------------------------------*/
-        jQuery('[data-toggle="popover"]').popover();
-        jQuery('[data-toggle="tooltip"]').tooltip();
-
-        /*---------------------------------------------------------------------
-        Magnific Popup
-        -----------------------------------------------------------------------*/
-        jQuery('.popup-gallery').magnificPopup({
-            delegate: 'a.popup-img',
-            type: 'image',
-            tLoading: 'Loading image #%curr%...',
-            mainClass: 'mfp-img-mobile',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-            },
-            image: {
-                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-                titleSrc: function(item) {
-                    return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
-                }
-            }
-        });
-        jQuery('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-            disableOn: 700,
-            type: 'iframe',
-            mainClass: 'mfp-fade',
-            removalDelay: 160,
-            preloader: false,
-            fixedContentPos: false
-        });
-
-
-        /*---------------------------------------------------------------------
-        Ripple Effect
-        -----------------------------------------------------------------------*/
-        jQuery(document).on('click', ".iq-waves-effect", function(e) {
-            // Remove any old one
-            jQuery('.ripple').remove();
-            // Setup
-            let posX = jQuery(this).offset().left,
-                posY = jQuery(this).offset().top,
-                buttonWidth = jQuery(this).width(),
-                buttonHeight = jQuery(this).height();
-
-            // Add the element
-            jQuery(this).prepend("<span class='ripple'></span>");
-
-
-            // Make it round!
-            if (buttonWidth >= buttonHeight) {
-                buttonHeight = buttonWidth;
-            } else {
-                buttonWidth = buttonHeight;
-            }
-
-            // Get the center of the element
-            let x = e.pageX - posX - buttonWidth / 2;
-            let y = e.pageY - posY - buttonHeight / 2;
-
-
-            // Add the ripples CSS and start the animation
-            jQuery(".ripple").css({
-                width: buttonWidth,
-                height: buttonHeight,
-                top: y + 'px',
-                left: x + 'px'
-            }).addClass("rippleEffect");
-        });
-
-       /*---------------------------------------------------------------------
-        Sidebar Widget
-        -----------------------------------------------------------------------*/
-       
-        jQuery(document).on("click", '.iq-menu > li > a', function() {
-            jQuery('.iq-menu > li > a').parent().removeClass('active');
-            jQuery(this).parent().addClass('active');
-        });
-       
-        /*---------------------------------------------------------------------
-        Page FAQ
-        -----------------------------------------------------------------------*/
-        jQuery('.iq-accordion .iq-accordion-block .accordion-details').hide();
-        jQuery('.iq-accordion .iq-accordion-block:first').addClass('accordion-active').children().slideDown('slow');
-        jQuery(document).on("click", '.iq-accordion .iq-accordion-block', function() {
-            if (jQuery(this).children('div.accordion-details ').is(':hidden')) {
-                jQuery('.iq-accordion .iq-accordion-block').removeClass('accordion-active').children('div.accordion-details ').slideUp('slow');
-                jQuery(this).toggleClass('accordion-active').children('div.accordion-details ').slideDown('slow');
-            }
-        });
-        
-        /*---------------------------------------------------------------------
-        Page Loader
-        -----------------------------------------------------------------------*/
-        jQuery("#load").fadeOut();
-        jQuery("#loading").delay().fadeOut("");
-
-        
-
-       /*---------------------------------------------------------------------
-       Owl Carousel
-       -----------------------------------------------------------------------*/
-        jQuery('.owl-carousel').each(function() {
-            let jQuerycarousel = jQuery(this);
-            jQuerycarousel.owlCarousel({
-                items: jQuerycarousel.data("items"),
-                loop: jQuerycarousel.data("loop"),
-                margin: jQuerycarousel.data("margin"),
-                nav: jQuerycarousel.data("nav"),
-                dots: jQuerycarousel.data("dots"),
-                autoplay: jQuerycarousel.data("autoplay"),
-                autoplayTimeout: jQuerycarousel.data("autoplay-timeout"),
-                navText: ["<i class='fa fa-angle-left fa-2x'></i>", "<i class='fa fa-angle-right fa-2x'></i>"],
-                responsiveClass: true,
-                responsive: {
-                    // breakpoint from 0 up
-                    0: {
-                        items: jQuerycarousel.data("items-mobile-sm"),
-                        nav: false,
-                        dots: true
-                    },
-                    // breakpoint from 480 up
-                    480: {
-                        items: jQuerycarousel.data("items-mobile"),
-                        nav: false,
-                        dots: true
-                    },
-                    // breakpoint from 786 up
-                    786: {
-                        items: jQuerycarousel.data("items-tab")
-                    },
-                    // breakpoint from 1023 up
-                    1023: {
-                        items: jQuerycarousel.data("items-laptop")
-                    },
-                    1199: {
-                        items: jQuerycarousel.data("items")
-                    }
-                }
-            });
-        });
-
-        /*---------------------------------------------------------------------
-        Search input
-        -----------------------------------------------------------------------*/
-        jQuery(document).on('click', function(e) {
-            let myTargetElement = e.target;
-            let selector, mainElement;
-            if (jQuery(myTargetElement).hasClass('search-toggle') || jQuery(myTargetElement).parent().hasClass('search-toggle') || jQuery(myTargetElement).parent().parent().hasClass('search-toggle')) {
-                if (jQuery(myTargetElement).hasClass('search-toggle')) {
-                    selector = jQuery(myTargetElement).parent();
-                    mainElement = jQuery(myTargetElement);
-                } else if (jQuery(myTargetElement).parent().hasClass('search-toggle')) {
-                    selector = jQuery(myTargetElement).parent().parent();
-                    mainElement = jQuery(myTargetElement).parent();
-                } else if (jQuery(myTargetElement).parent().parent().hasClass('search-toggle')) {
-                    selector = jQuery(myTargetElement).parent().parent().parent();
-                    mainElement = jQuery(myTargetElement).parent().parent();
-                }
-                if (!mainElement.hasClass('active') && jQuery(".navbar-list li").find('.active')) {
-                    jQuery('.navbar-list li').removeClass('iq-show');
-                    jQuery('.navbar-list li .search-toggle').removeClass('active');
-                }
-
-                selector.toggleClass('iq-show');
-                mainElement.toggleClass('active');
-
-                e.preventDefault();
-            } else if (jQuery(myTargetElement).is('.search-input')) {} else {
-                jQuery('.navbar-list li').removeClass('iq-show');
-                jQuery('.navbar-list li .search-toggle').removeClass('active');
-            }
-        });
-
-        /*---------------------------------------------------------------------
-        Scrollbar
-        -----------------------------------------------------------------------*/
-        let Scrollbar = window.Scrollbar;
-        if (jQuery('#sidebar-scrollbar').length) {
-            Scrollbar.init(document.querySelector('#sidebar-scrollbar'), options);
-        }
-        let Scrollbar1 = window.Scrollbar;
-        if (jQuery('#right-sidebar-scrollbar').length) {
-            Scrollbar1.init(document.querySelector('#right-sidebar-scrollbar'), options);
-        }
-
-
-
-        /*---------------------------------------------------------------------
-        Counter
-        -----------------------------------------------------------------------*/
-        jQuery('.counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
-
-        /*---------------------------------------------------------------------
-        slick
-        -----------------------------------------------------------------------*/
-        jQuery('.slick-slider').slick({
-            centerMode: true,
-            centerPadding: '60px',
-            slidesToShow: 9,
-            slidesToScroll: 1,
-            focusOnSelect: true,
-            responsive: [{
-                breakpoint: 992,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '30',
-                    slidesToShow: 3
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '15',
-                    slidesToShow: 1
-                }
-            }],
-            nextArrow: '<a href="#" class="ri-arrow-left-s-line left"></a>',
-            prevArrow: '<a href="#" class="ri-arrow-right-s-line right"></a>',
-        });
-      
-        jQuery('.top-rated-item').slick({
-            slidesToShow: 4,
-            speed: 300,
-            slidesToScroll: 1,
-            focusOnSelect: true,
-             appendArrows: $('#top-rated-item-slick-arrow'),
-            responsive: [{
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 3
-                }
-            },{
-                breakpoint: 798,
-                settings: {
-                    slidesToShow: 2
-                }
-            },{
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    autoplay:true,
-                    slidesToShow: 1
-                }
-            }],
-        });
-
-        $('#newrealease-slider').slick({
-          dots: false,
-          arrows: false,
-          infinite: true,
-          speed: 300,
-          centerMode: true,
-          centerPadding: false,
-          variableWidth: true ,
-          infinite: true,
-          focusOnSelect: true,
-          autoplay: false,
-          slidesToShow: 7,
-          slidesToScroll: 1,
-          
-          
-        });
-
-       $("#newrealease-slider .slick-active.slick-center").prev('.slick-active').addClass('temp');
-        $("#newrealease-slider .slick-active.temp").prev().addClass('temp-1');
-        $("#newrealease-slider .slick-active.temp-1").prev().addClass('temp-2');
-
-         $("#newrealease-slider .slick-active.slick-center").next('.slick-active').addClass('temp-next');
-        $("#newrealease-slider .slick-active.temp-next").next().addClass('temp-next-1');
-        $("#newrealease-slider .slick-active.temp-next-1").next().addClass('temp-next-2');
-
-         $("#newrealease-slider").on("afterChange", function (){
-          var slick_index = $(".slick-active.slick-center").data('slick-index');
-          
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-1)+'"]').addClass('temp');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-2)+'"]').addClass('temp-1');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-3)+'"]').addClass('temp-2');
-
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+1))+'"]').addClass('temp-next');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+2))+'"]').addClass('temp-next-1');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+3))+'"]').addClass('temp-next-2');
-
-
-        });
-
-        $("#newrealease-slider").on("beforeChange", function (){
-          var slick_index = $(".slick-active.slick-center").data('slick-index');
-          
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-1)+'"]').removeClass('temp');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-2)+'"]').removeClass('temp-1');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(slick_index-3)+'"]').removeClass('temp-2');
-
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+1))+'"]').removeClass('temp-next');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+2))+'"]').removeClass('temp-next-1');
-          $('#newrealease-slider .slick-active[data-slick-index="'+(parseInt(slick_index+3))+'"]').removeClass('temp-next-2');
-
-        });
-
-        $('#favorites-slider').slick({
-          dots: false,
-          arrows: false,
-          infinite: true,
-          speed: 300,
-          centerMode: false,
-          autoplay: true,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                infinite: true,
-              }
-            },
-            {
-              breakpoint: 992,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
-              }
-            },
-            {
-              breakpoint: 767,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
-        });
-
-        $('#similar-slider').slick({
-          dots: false,
-          arrows: false,
-          infinite: true,
-          speed: 300,
-          centerMode: false,
-          autoplay: true,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                infinite: true,
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
-              }
-            },
-            {
-              breakpoint: 576,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
-        });
-
-        $('#single-similar-slider').slick({
-          dots: false,
-          arrows: false,
-          infinite: true,
-          speed: 300,
-          centerMode: false,
-          autoplay: true,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                infinite: true,
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
-              }
-            },
-            {
-              breakpoint: 576,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
-        });
-
-        $('#trendy-slider').slick({
-          dots: false,
-          arrows: false,
-          infinite: true,
-          speed: 300,
-          centerMode: false,
-          autoplay: true,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                infinite: true,
-              }
-            },
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
-              }
-            },
-            {
-              breakpoint: 576,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
-            }
-          ]
-        });
-
-        $('#description-slider').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          fade: true,
-          asNavFor: '#description-slider-nav'
-        });
-
-        $('#description-slider-nav').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          asNavFor: '#description-slider',
-          dots: false,
-          arrows: false,
-          infinite: true,
-          vertical: true,
-          centerMode: false,
-          focusOnSelect: true
-        });
-
-       /*---------------------------------------------------------------------
-      Select 2 Dropdown
-    -----------------------------------------------------------------------*/
-
-
-   if (jQuery('select').hasClass('season-select')) {
-
-        jQuery('select').select2({
-          theme: 'bootstrap4',
-          allowClear: false 
-        });
-      }
-   
-
-
-        /*---------------------------------------------------------------------
-        Progress Bar
-        -----------------------------------------------------------------------*/
-        jQuery('.iq-progress-bar > span').each(function() {
-            let progressBar = jQuery(this);
-            let width = jQuery(this).data('percent');
-            progressBar.css({
-                'transition': 'width 2s'
-            });
-
-            setTimeout(function() {
-                progressBar.appear(function() {
-                    progressBar.css('width', width + '%');
-                });
-            }, 100);
-        });
-
-
-        /*---------------------------------------------------------------------
-        Page Menu
-        -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.wrapper-menu', function() {
-            jQuery(this).toggleClass('open');
-        });
-
-        jQuery(document).on('click', ".wrapper-menu", function() {
-            jQuery("body").toggleClass("sidebar-main");
-        });
-        
-
-
-        /*---------------------------------------------------------------------
-        Wow Animation
-        -----------------------------------------------------------------------*/
-        let wow = new WOW({
-            boxClass: 'wow',
-            animateClass: 'animated',
-            offset: 0,
-            mobile: false,
-            live: true
-        });
-        wow.init();
-
-
-        
-        /*---------------------------------------------------------------------
-        Form Validation
-        -----------------------------------------------------------------------*/
-
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-
-      /*---------------------------------------------------------------------
-       Active Class for Pricing Table
-       -----------------------------------------------------------------------*/
-      jQuery("#my-table tr th").click(function () {
-        jQuery('#my-table tr th').children().removeClass('active');
-        jQuery(this).children().addClass('active');
-        jQuery("#my-table td").each(function () {
-          if (jQuery(this).hasClass('active')) {
-            jQuery(this).removeClass('active')
-          }
-        });
-        var col = jQuery(this).index();
-        jQuery("#my-table tr td:nth-child(" + parseInt(col + 1) + ")").addClass('active');
-      });
-
-        /*------------------------------------------------------------------
-        Flatpicker
-        * -----------------------------------------------------------------*/
-      if (jQuery('.date-input').hasClass('basicFlatpickr')) {
-          jQuery('.basicFlatpickr').flatpickr();
-          jQuery('#inputTime').flatpickr({
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-          });
-          jQuery('#inputDatetime').flatpickr({
-            enableTime: true
-          });
-          jQuery('#inputWeek').flatpickr({            
-            weekNumbers: true
-          });          
-      }
-        
-        /*---------------------------------------------------------------------
-           Scroll up menu
-        -----------------------------------------------------------------------*/
-        var position = $(window).scrollTop();
-        $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
-            //  console.log(scroll);
-            
-            if(scroll < position) {
-                 $('.tab-menu-horizontal').addClass('menu-up');
-                 $('.tab-menu-horizontal').removeClass('menu-down');
-            } 
-            else {
-                $('.tab-menu-horizontal').addClass('menu-down');
-                $('.tab-menu-horizontal').removeClass('menu-up');
-            }
-            if(scroll == 0)
-            {
-                $('.tab-menu-horizontal').removeClass('menu-up');
-                $('.tab-menu-horizontal').removeClass('menu-down');
-            }
-            position = scroll;
-        });
-
-
-        /*---------------------------------------------------------------------
-           checkout
-        -----------------------------------------------------------------------*/
-
-        jQuery(document).ready(function(){
-            jQuery('#place-order').click(function(){
-                jQuery('#cart').removeClass('show');
-                jQuery('#address').addClass('show');
-            });
-            jQuery('#deliver-address').click(function(){
-                jQuery('#address').removeClass('show');
-                jQuery('#payment').addClass('show');
-            });
-        });
-
-         /*---------------------------------------------------------------------
-           Datatables
-        -----------------------------------------------------------------------*/
-        if(jQuery('.data-tables').length)
-        {
-          $('.data-tables').DataTable();
-        }
- 
-
-      /*---------------------------------------------------------------------
-      image-upload
-      -----------------------------------------------------------------------*/
-
-      $('.form_gallery-upload').on('change', function() {
-          var length = $(this).get(0).files.length;
-          var galleryLabel  = $(this).attr('data-name');
-
-          if( length > 1 ){
-            $(galleryLabel).text(length + " files selected");
-          } else {
-            $(galleryLabel).text($(this)[0].files[0].name);
-          }
-        });
-
- /*---------------------------------------------------------------------
-    video
-      -----------------------------------------------------------------------*/
-      $(document).ready(function(){
-      $('.form_video-upload input').change(function () {
-        $('.form_video-upload p').text(this.files.length + " file(s) selected");
-      });
-    });
-        /*---------------------------------------------------------------------
-        Button 
-        -----------------------------------------------------------------------*/
-
-        jQuery('.qty-btn').on('click',function(){
-          var id = jQuery(this).attr('id');
-
-          var val = parseInt(jQuery('#quantity').val());
-
-          if(id == 'btn-minus')
-          {
-            if(val != 0)
-            {
-              jQuery('#quantity').val(val-1);
-            }
-            else
-            {
-              jQuery('#quantity').val(0);
-            }
-
-          }
-          else
-          {
-            jQuery('#quantity').val(val+1);
-          }
-        });
-
-        
-    });
-
+(function (jQuery) {
+	"use strict";
+	jQuery(document).ready(function() {
+
+		function activaTab(pill) {
+			jQuery(pill).addClass('active show');
+		}
+
+		/*---------------------------------------------------------------------
+			Sticky Header Animation & Height
+		----------------------------------------------------------------------- */
+		function headerHeight() {
+			var height = jQuery("#main-header").height();
+			jQuery('.iq-height').css('height', height + 'px');
+		}
+		jQuery(function() {
+			var header = jQuery("#main-header"),
+				yOffset = 0,
+				triggerPoint = 80;
+
+			headerHeight();
+
+			jQuery(window).resize(headerHeight);
+			jQuery(window).on('scroll', function() {
+
+				yOffset = jQuery(window).scrollTop();
+
+				if (yOffset >= triggerPoint) {
+					header.addClass("menu-sticky animated slideInDown");
+				} else {
+					header.removeClass("menu-sticky animated slideInDown");
+				}
+
+			});
+		});
+		
+		/*---------------------------------------------------------------------
+			Back to Top
+		---------------------------------------------------------------------*/
+		var btn = $('#back-to-top');
+		$(window).scroll(function () {
+			if ($(window).scrollTop() > 50) {
+				btn.addClass('show');
+			} else {
+				btn.removeClass('show');
+			}
+		});
+		btn.on('click', function (e) {
+			e.preventDefault();
+			$('html, body').animate({ scrollTop: 0 }, '300');
+		});
+
+		/*---------------------------------------------------------------------
+			Header Menu Dropdown
+		---------------------------------------------------------------------*/
+		jQuery('[data-toggle=more-toggle]').on('click', function() {
+			jQuery(this).next().toggleClass('show');
+		});
+
+		jQuery(document).on('click', function(e) {
+			let myTargetElement = e.target;
+			let selector, mainElement;
+			if (jQuery(myTargetElement).hasClass('search-toggle') || jQuery(myTargetElement).parent().hasClass('search-toggle') || jQuery(myTargetElement).parent().parent().hasClass('search-toggle')) {
+				if (jQuery(myTargetElement).hasClass('search-toggle')) {
+					selector = jQuery(myTargetElement).parent();
+					mainElement = jQuery(myTargetElement);
+				} else if (jQuery(myTargetElement).parent().hasClass('search-toggle')) {
+					selector = jQuery(myTargetElement).parent().parent();
+					mainElement = jQuery(myTargetElement).parent();
+				} else if (jQuery(myTargetElement).parent().parent().hasClass('search-toggle')) {
+					selector = jQuery(myTargetElement).parent().parent().parent();
+					mainElement = jQuery(myTargetElement).parent().parent();
+				}
+				if (!mainElement.hasClass('active') && jQuery(".navbar-list li").find('.active')) {
+					jQuery('.navbar-right li').removeClass('iq-show');
+					jQuery('.navbar-right li .search-toggle').removeClass('active');
+				}
+
+				selector.toggleClass('iq-show');
+				mainElement.toggleClass('active');
+
+				e.preventDefault();
+			} else if (jQuery(myTargetElement).is('.search-input')) {} else {
+				jQuery('.navbar-right li').removeClass('iq-show');
+				jQuery('.navbar-right li .search-toggle').removeClass('active');
+			}
+		});
+
+		// ------------------------------------------------------------
+		// ------------------------------------------------------------
+		jQuery('.iq-accordion .iq-accordion-block .iq-accordion-details').hide();
+		jQuery('.iq-accordion .iq-accordion-block:first').addClass('iq-active').children().slideDown('slow');
+		jQuery('.iq-accordion .iq-accordion-block').on("click", function() {
+			if (jQuery(this).children('div.iq-accordion-details').is(':hidden')) {
+				jQuery('.iq-accordion .iq-accordion-block').removeClass('iq-active').children('div.iq-accordion-details').slideUp('slow');
+				jQuery(this).toggleClass('iq-active').children('div.iq-accordion-details').slideDown('slow');
+			}
+		});
+
+		/*---------------------------------------------------------------------
+			Slick Slider
+		----------------------------------------------------------------------- */
+		$('#home-slider').slick({
+			autoplay: false,
+			speed: 800,
+			lazyLoad: 'progressive',
+			arrows: true,
+			dots: false,
+			prevArrow: '<div class="slick-nav prev-arrow"><i></i><svg><use xlink:href="#circle"></svg></div>',
+			nextArrow: '<div class="slick-nav next-arrow"><i></i><svg><use xlink:href="#circle"></svg></div>',
+			responsive: [
+				{
+					breakpoint: 992,
+					settings: {
+						dots: true,
+						arrows: false,
+					}
+				}
+			]
+		}).slickAnimation();
+		$('.slick-nav').on('click touch', function (e) {
+
+			e.preventDefault();
+
+			var arrow = $(this);
+
+			if (!arrow.hasClass('animate')) {
+				arrow.addClass('animate');
+				setTimeout(() => {
+					arrow.removeClass('animate');
+				}, 1600);
+			}
+
+		});
+		jQuery('.favorites-slider').slick({
+			dots: false,
+			arrows: true,
+			infinite: true,
+			speed: 300,
+			autoplay: false,
+			slidesToShow: 4,
+			slidesToScroll: 1,		
+			// appendArrows: $('#sm-slick-arrow'),
+			
+			nextArrow: '<a href="#" class="slick-arrow slick-next"><i class= "fa fa-chevron-right"></i></a>',
+			prevArrow: '<a href="#" class="slick-arrow slick-prev"><i class= "fa fa-chevron-left"></i></a>',
+			responsive: [
+			{
+				breakpoint: 1200,
+				settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				infinite: true,
+				dots: true
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+				// arrows: false,
+				slidesToShow: 1,
+				slidesToScroll: 1
+				}
+			}
+			]
+		});
+
+		jQuery('#top-ten-slider').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: false,
+			fade: true,
+			asNavFor: '#top-ten-slider-nav',
+			responsive: [
+			{
+				breakpoint: 992,
+				settings: {
+				asNavFor: false,
+				arrows: true,
+				nextArrow: '<button class="NextArrow"><i class="ri-arrow-right-s-line"></i></button>',
+				prevArrow: '<button class="PreArrow"><i class="ri-arrow-left-s-line"></i></button>',
+				}
+			}
+			]
+		});
+		jQuery('#top-ten-slider-nav').slick({
+			slidesToShow: 3,
+			slidesToScroll: 1,
+			asNavFor: '#top-ten-slider',
+			dots: false,
+			arrows: true,
+			infinite: true,
+			vertical:true,
+			verticalSwiping: true,
+			centerMode: false,
+			nextArrow:'<button class="NextArrow"><i class="ri-arrow-down-s-line"></i></button>',
+			prevArrow:'<button class="PreArrow"><i class="ri-arrow-up-s-line"></i></button>',
+			focusOnSelect: true,
+			responsive: [		    
+				{
+				breakpoint: 1200,
+				settings: {
+					slidesToShow: 2,
+				}
+				},
+				{
+					breakpoint: 600,
+					settings: {
+						asNavFor: false,
+					}
+				},
+			]
+		});
+
+		jQuery('#episodes-slider2').slick({
+			dots: false,
+			arrows: true,
+			infinite: true,
+			speed: 300,
+			autoplay: false,
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				infinite: true,
+				dots: true,
+				}
+			},
+			{
+				breakpoint: 600,
+				settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				}
+			}
+			]
+		});
+
+		jQuery('#episodes-slider3').slick({
+			dots: false,
+			arrows: true,
+			infinite: true,
+			speed: 300,
+			autoplay: false,
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1,
+				infinite: true,
+				dots: true,
+				}
+			},
+			{
+				breakpoint: 600,
+				settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				}
+			}
+			]
+		});
+
+		jQuery('#trending-slider').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,		 
+			arrows: false,
+			fade: true,
+			draggable:false,
+			asNavFor: '#trending-slider-nav',	
+		});
+		jQuery('#trending-slider-nav').slick({
+			slidesToShow: 5,
+			slidesToScroll: 1,
+			asNavFor: '#trending-slider',
+			dots: false,
+			arrows: true,
+			nextArrow: '<a href="#" class="slick-arrow slick-next"><i class= "fa fa-chevron-right"></i></a>',
+			prevArrow: '<a href="#" class="slick-arrow slick-prev"><i class= "fa fa-chevron-left"></i></a>',
+			infinite: true,
+			centerMode: true,
+			centerPadding:0,
+			focusOnSelect: true,
+			responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+				}
+			},
+			{
+				breakpoint: 600,
+				settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+				}
+			}
+			]
+		});
+		
+		jQuery('#tvshows-slider').slick({
+			centerMode: true,
+			centerPadding: '200px',
+			slidesToShow: 1,
+			nextArrow: '<button class="NextArrow"><i class="ri-arrow-right-s-line"></i></button>',
+			prevArrow: '<button class="PreArrow"><i class="ri-arrow-left-s-line"></i></button>',
+			arrows:true,
+			dots:false,
+			responsive: [
+				{
+					breakpoint: 991,
+					settings: {
+						arrows: false,
+						centerMode: true,
+						centerPadding: '20px',
+						slidesToShow: 1
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						arrows: false,
+						centerMode: true,
+						centerPadding: '20px',
+						slidesToShow: 1
+					}
+				}
+			]
+		});
+
+		/*---------------------------------------------------------------------
+			Owl Carousel
+		----------------------------------------------------------------------- */
+		jQuery('.episodes-slider1').owlCarousel({
+			loop:true,
+			margin:20,
+			nav:true,
+			navText: ["<i class='ri-arrow-left-s-line'></i>", "<i class='ri-arrow-right-s-line'></i>"],
+			dots:false,
+			responsive:{
+				0:{
+					items:1
+				},
+				600:{
+					items:1
+				},
+				1000:{
+					items:4
+				}
+			}
+		});
+		
+		/*---------------------------------------------------------------------
+			Page Loader
+		----------------------------------------------------------------------- */
+		jQuery("#load").fadeOut();
+		jQuery("#loading").delay(0).fadeOut("slow");
+		
+		jQuery('.widget .fa.fa-angle-down, #main .fa.fa-angle-down').on('click', function () {
+			jQuery(this).next('.children, .sub-menu').slideToggle();
+		});
+
+		/*---------------------------------------------------------------------
+		Mobile Menu Overlay
+		----------------------------------------------------------------------- */
+		jQuery(document).on("click", function(event){
+	    var $trigger = jQuery(".main-header .navbar");
+	    if($trigger !== event.target && !$trigger.has(event.target).length){
+			jQuery(".main-header .navbar-collapse").collapse('hide');
+			jQuery('body').removeClass('nav-open');
+	    }            
+		});
+		jQuery('.c-toggler').on("click", function(){
+			jQuery('body').addClass('nav-open');
+		}); 
+
+		/*---------------------------------------------------------------------
+		  Equal Height of Tab Pane
+		-----------------------------------------------------------------------*/		
+		jQuery('.trending-content').each(function () {			
+			var highestBox = 0;			
+			jQuery('.tab-pane', this).each(function () {				
+				if (jQuery(this).height() > highestBox) {
+					highestBox = jQuery(this).height();
+				}
+			});			 
+			jQuery('.tab-pane', this).height(highestBox);
+		}); 
+
+		/*---------------------------------------------------------------------
+	 		Active Class for Pricing Table
+  	 	-----------------------------------------------------------------------*/
+		jQuery("#my-table tr th").on("click", function (){
+			jQuery('#my-table tr th').children().removeClass('active');
+			jQuery(this).children().addClass('active');
+			jQuery("#my-table td").each(function () {
+				if (jQuery(this).hasClass('active')) {
+					jQuery(this).removeClass('active')
+				}
+			});
+			var col = jQuery(this).index();
+			jQuery("#my-table tr td:nth-child(" + parseInt(col + 1) + ")").addClass('active');
+		});
+		
+		/*---------------------------------------------------------------------
+			Select 2 Dropdown
+		-----------------------------------------------------------------------*/
+		if (jQuery('select').hasClass('season-select')){
+			jQuery('select').select2({
+				theme: 'bootstrap4',
+				allowClear: false,
+				width: 'resolve'
+			});
+		}
+		if (jQuery('select').hasClass('pro-dropdown')) {			
+			jQuery('.pro-dropdown').select2({
+				theme: 'bootstrap4',			
+				minimumResultsForSearch: Infinity,			
+				width: 'resolve'
+			});	
+			jQuery('#lang').select2({
+				theme: 'bootstrap4',
+				placeholder: 'Language Preference',
+				allowClear: true,
+				width: 'resolve'
+			});
+		}
+
+		/*---------------------------------------------------------------------
+			Video popup
+		-----------------------------------------------------------------------*/
+		jQuery('.video-open').magnificPopup({
+			type: 'iframe',
+			mainClass: 'mfp-fade',
+			removalDelay: 160,
+			preloader: false,
+			fixedContentPos: false,
+			iframe: {
+				markup: '<div class="mfp-iframe-scaler">' +
+					'<div class="mfp-close"></div>' +
+					'<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
+					'</div>',
+
+				srcAction: 'iframe_src',
+			}
+		});
+
+		/*---------------------------------------------------------------------
+			Flatpicker
+		-----------------------------------------------------------------------*/
+		if (jQuery('.date-input').hasClass('basicFlatpickr')) {
+			jQuery('.basicFlatpickr').flatpickr();
+		}
+		/*---------------------------------------------------------------------
+			Custom File Uploader
+		-----------------------------------------------------------------------*/
+		jQuery(".file-upload").on("change", function () {
+			! function (e) {
+				if (e.files && e.files[0]) {
+					var t = new FileReader;
+					t.onload = function (e) {
+						jQuery(".profile-pic").attr("src", e.target.result)
+					}, t.readAsDataURL(e.files[0])
+				}
+			}(this)
+		}), jQuery(".upload-button").on("click", function () {
+			jQuery(".file-upload").click();
+		});
+		// new WOW().init();
+		// var swiper = new Swiper('.swiper-container', {
+		// 	effect: 'fade',
+		// 	grabCursor: true,
+		// 	centeredSlides: false,
+		// 	slidesPerView: 'auto',
+		// 	freeMode: true,
+		// 	loop: true,
+		// 	parallax: true,
+		// 	on: {
+		// 		slideChangeTransitionEnd: function () {
+		// 			$('.aos-slide').show(0);
+		// 			AOS.init();
+		// 		},
+		// 		slideChangeTransitionStart: function () {
+		// 			$('.aos-slide').hide(0);
+		// 			$('.aos-slide').removeClass('aos-init').removeClass('aos-animate');
+					
+		// 		},
+		// 	},
+		// 	pagination: {
+		// 		el: '.swiper-pagination',
+		// 	},
+		// 	navigation: {
+		// 		nextEl: '.swiper-button-next',
+		// 		prevEl: '.swiper-button-prev',
+		// 	},
+		// });
+	
+		// AOS.init();	
+		$(".iq-price-rate-wrap").click(function(){
+			$(".iq-price-rate-wrap").removeClass("active")
+			$(this).addClass("active");
+		  });
+	});
 })(jQuery);
