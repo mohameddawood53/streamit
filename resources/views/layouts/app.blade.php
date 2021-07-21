@@ -13,7 +13,10 @@
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 
     <!-- Fonts -->
-
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset("images/favicon.ico")}}" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset("css/dash/bootstrap.min.css")}}">
@@ -92,6 +95,7 @@
         </main>
     </div>
     <!-- Scripts -->
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{asset("js/dash/jquery.min.js")}}"></script>
     <script src="{{asset("js/dash/popper.min.js")}}"></script>
