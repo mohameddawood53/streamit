@@ -78,7 +78,7 @@ class FattorahPaymentController extends Controller
 
     public function error(Request $request)
     {
-        
-        return "error";
+
+        return view("error");
     }
 }

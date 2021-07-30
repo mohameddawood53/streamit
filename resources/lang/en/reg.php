@@ -23,7 +23,19 @@ return [
     "logout" => "Logout",
     "my fatoorah" => "My Fatoorah",
     "payment success" => "The payment done successfully",
-    "transaction id" => "Transaction ID"
+    "transaction id" => "Transaction ID",
+    "payment error" => "The payment failed",
+    "try again" => "Try again",
+    "remember" => "Remember me",
+    "without account" => "Don\'t have an account?",
+    "forgot password" => "Forgot your password?",
+    "reset" => "Reset Password",
+    "reset message" => "Enter your email address and we'll send you an email with instructions to reset your password."
+
+
+
+
+
 
 
 
