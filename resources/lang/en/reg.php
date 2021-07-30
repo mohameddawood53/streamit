@@ -18,5 +18,15 @@ return [
     "terms" => "Terms And Conditions",
     "register" => "Sign Up",
     "already have an account?" => "Already have an account ?",
-    "sign in" => "Sign in"
+    "sign in" => "Sign in",
+    "payment method" => "Please choose the appropriate payment method for you",
+    "logout" => "Logout",
+    "my fatoorah" => "My Fatoorah",
+    "payment success" => "The payment done successfully",
+    "transaction id" => "Transaction ID"
+
+
+
+
+
 ];

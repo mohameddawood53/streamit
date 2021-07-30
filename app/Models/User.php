@@ -20,6 +20,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        "package",
+        "pck_start",
+        "pck_end",
+        "phone"
     ];
 
     /**

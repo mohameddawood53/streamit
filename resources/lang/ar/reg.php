@@ -12,11 +12,16 @@ return [
     "membership" => "الباقة",
     "select membership" => "اختر الباقة",
     "yearly bundle" => "باقة سنوية (999) جنيه مصري",
-    "3 month bundle" => "باقة ربع سنوية (288) جنيه مصري",
+    "3 month bundle" => "باقة ربع سنوية - 3 شهور - (288) جنيه مصري",
     "monthly bundle" => "باقة شهرية (99) جنيه مصري",
-    "i accept" => "انا أوافق علي جميع",
+    "i accept" => " أوافق علي جميع",
     "terms" => "الشروط والأحكام",
     "register" => "تسجيل",
     "already have an account?" => "تمتلك بالفعل حساب ؟",
-    "sign in" => "تسجبل دخول"
+    "sign in" => "تسجبل دخول",
+    "payment method" => "اختر طريقة الدفع المناسبة لك",
+    "logout" => "تسجيل الخروج",
+    "my fatoorah" => "ماي فاتورة",
+    "payment success" => "تمت عملية الدفع بنجاح",
+    "transaction id" => "رقم العملية"
 ];

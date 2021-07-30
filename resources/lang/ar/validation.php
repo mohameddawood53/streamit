@@ -124,8 +124,8 @@ return [
     'url'                  => 'صيغة رابط حقل :attribute غير صحيحة.',
     'uuid'                 => 'حقل :attribute يجب أن يكون بصيغة UUID سليمة.',
     'custom'               => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'terms' => [
+            'required' => 'يجب عليك قرأة جميع الشروط والأحكام ومن ثم الموافقة عليها للمتابعه.',
         ],
     ],
     'attributes'           => [
@@ -158,5 +158,7 @@ return [
         'title'                 => 'العنوان',
         'username'              => 'اسم المُستخدم',
         'year'                  => 'السنة',
+        "package" => "الباقة",
+        "terms" => "الشروط والأحكام"
     ],
 ];

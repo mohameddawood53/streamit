@@ -135,8 +135,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'terms' => [
+            'required' => 'You have to read all the terms and conditions and accept to complete',
         ],
     ],
 
