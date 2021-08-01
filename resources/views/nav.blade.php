@@ -148,13 +148,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </li>
                                             <li>
                                                 <a href="#" class="iq-user-dropdown search-toggle d-flex align-items-center">
                                                     <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle"
                                                          alt="user">
                                                 </a>
-                                                <div class="iq-sub-dropdown iq-user-dropdown">
+                                                <div class="iq-sub-dropdown iq-user-dropdown" {{__("reg.direction")}}>
                                                     <div class="iq-card shadow-none m-0">
                                                         <div class="iq-card-body p-0 pl-3 pr-3">
                                                             <a href="manage-profile.html" class="iq-sub-card setting-dropdown">
@@ -163,7 +164,7 @@
                                                                         <i class="ri-file-user-line text-primary"></i>
                                                                     </div>
                                                                     <div class="media-body ml-3">
-                                                                        <h6 class="mb-0 ">Manage Profile</h6>
+                                                                        <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.manage profile")}}</h6>
                                                                     </div>
                                                                 </div>
                                                             </a>
@@ -173,7 +174,7 @@
                                                                         <i class="ri-settings-4-line text-primary"></i>
                                                                     </div>
                                                                     <div class="media-body ml-3">
-                                                                        <h6 class="mb-0 ">Settings</h6>
+                                                                        <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.settings")}}</h6>
                                                                     </div>
                                                                 </div>
                                                             </a>
@@ -183,7 +184,7 @@
                                                                         <i class="ri-settings-4-line text-primary"></i>
                                                                     </div>
                                                                     <div class="media-body ml-3">
-                                                                        <h6 class="mb-0 ">Pricing Plan</h6>
+                                                                        <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.Pricing plan")}}</h6>
                                                                     </div>
                                                                 </div>
                                                             </a>
@@ -193,10 +194,36 @@
                                                                         <i class="ri-logout-circle-line text-primary"></i>
                                                                     </div>
                                                                     <div class="media-body ml-3">
-                                                                        <h6 class="mb-0">Logout</h6>
+                                                                        <form action="{{route("logout")}}" method="post">
+                                                                            @csrf
+                                                                            <button class="my-0 {{__("home.mx nav")}} {{__("reg.float")}}" style="background: none; border: none; color: white; cursor: pointer">{{__("home.logout")}}</button>
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </a>
+                                                            @if(app()->getLocale() == "ar")
+                                                                <a href="/lang/en" class="iq-sub-card setting-dropdown">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="right-icon">
+                                                                            <img src="{{asset("images/united-states-of-america.svg")}}" alt="">
+                                                                        </div>
+                                                                        <div class="media-body ml-3">
+                                                                            <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">EN</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            @elseif(app()->getLocale() == "en")
+                                                                <a href="/lang/ar" class="iq-sub-card setting-dropdown">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="right-icon">
+                                                                            <img src="{{asset("images/egypt.svg")}}" alt="">
+                                                                        </div>
+                                                                        <div class="media-body ml-3">
+                                                                            <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">العربية</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -268,7 +295,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="nav-item nav-icon">
+                                    <li class="nav-item nav-icon {{__("reg.float")}}" {{__("reg.direction")}}>
                                         <a href="#" class="iq-user-dropdown search-toggle p-0 d-flex align-items-center"
                                            data-toggle="search-toggle">
                                             <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle" alt="user">
@@ -282,7 +309,7 @@
                                                                 <i class="ri-file-user-line text-primary"></i>
                                                             </div>
                                                             <div class="media-body ml-3">
-                                                                <h6 class="my-0 ">Manage Profile</h6>
+                                                                <h6 class="my-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.manage profile")}}</h6>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -292,7 +319,7 @@
                                                                 <i class="ri-settings-4-line text-primary"></i>
                                                             </div>
                                                             <div class="media-body ml-3">
-                                                                <h6 class="my-0 ">Settings</h6>
+                                                                <h6 class="my-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.settings")}}</h6>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -302,7 +329,7 @@
                                                                 <i class="ri-settings-4-line text-primary"></i>
                                                             </div>
                                                             <div class="media-body ml-3">
-                                                                <h6 class="my-0 ">Pricing Plan</h6>
+                                                                <h6 class="my-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.Pricing plan")}}</h6>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -312,10 +339,37 @@
                                                                 <i class="ri-logout-circle-line text-primary"></i>
                                                             </div>
                                                             <div class="media-body ml-3">
-                                                                <h6 class="my-0 ">Logout</h6>
+                                                                <form action="{{route("logout")}}" method="post">
+                                                                    @csrf
+                                                                    <button class="my-0 {{__("home.mx nav")}} {{__("reg.float")}}" style="background: none; border: none; color: white; cursor: pointer">{{__("home.logout")}}</button>
+                                                                </form>
+{{--                                                                <h6 class="my-0 ">Logout</h6>--}}
                                                             </div>
                                                         </div>
                                                     </a>
+                                                    @if(app()->getLocale() == "ar")
+                                                        <a href="/lang/en" class="iq-sub-card setting-dropdown">
+                                                            <div class="media align-items-center">
+                                                                <div class="right-icon">
+                                                                    <img src="{{asset("images/united-states-of-america.svg")}}" width="30px" alt="">
+                                                                </div>
+                                                                <div class="media-body ml-3">
+                                                                    <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">EN</h6>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    @elseif(app()->getLocale() == "en")
+                                                        <a href="/lang/ar" class="iq-sub-card setting-dropdown">
+                                                            <div class="media align-items-center">
+                                                                <div class="right-icon">
+                                                                    <img src="{{asset("images/egypt.svg")}}" width="30px" alt="">
+                                                                </div>
+                                                                <div class="media-body ml-3">
+                                                                    <h6 class="mb-0">العربية</h6>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

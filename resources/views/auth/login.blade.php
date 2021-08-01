@@ -4,7 +4,10 @@
 <div style="font-family: Cairo">
     <section class="sign-in-page">
         <div class="container">
+
+
             <div class="row justify-content-center align-items-center height-self-center">
+
                 <div class="col-lg-5 col-md-12 align-self-center">
                     <div class="sign-user_card ">
                         <div class="sign-in-page-data">
@@ -47,11 +50,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-4 mt-5 {{__("reg.float")}}" {{__("reg.direction")}}>
+
+                    </div>
                 </div>
+
+
+
             </div>
             <!-- Sign in END -->
             <!-- color-customizer -->
+
         </div>
+
     </section>
+
 </div>
 @endsection

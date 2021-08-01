@@ -78,7 +78,15 @@ class FattorahPaymentController extends Controller
 
     public function error(Request $request)
     {
+        if (\auth()->user())
+        {
+            if (empty(\auth()->user()->pck_start))
+            {
+                return view("error");
+            }else{
+                return redirect()->to("/");
+            }
+        }
 
-        return view("error");
     }
 }
