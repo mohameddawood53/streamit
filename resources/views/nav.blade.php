@@ -46,23 +46,23 @@
                         </a>
                         <a class="navbar-brand" href="/"> <img class="img-fluid logo" src="images/logo.png"
                                                                         alt="streamit" /> </a>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent" {{__("reg.direction")}}>
                             <div class="menu-main-menu-container">
                                 <ul id="top-menu" class="navbar-nav ml-auto">
                                     <li class="menu-item">
-                                        <a href="index.html">Home</a>
+                                        <a href="/">{{__("home.home")}}</a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="movie-category.html">Movies</a>
+                                        <a href="movie-category.html">{{__("home.movies")}}</a>
                                     </li>
                                     <li class="menu-item">
-                                        <a href="show-category.html">Tv Shows</a>
+                                        <a href="show-category.html">{{__("home.tv shows")}}</a>
                                     </li>
                                     <!-- <li class="menu-item">
                                     <a href="movie-category.html">Blog</a>
                                  </li> -->
                                     <li class="menu-item">
-                                        <a href="#">Pages</a>
+                                        <a href="#">{{__("home.faq")}}</a>
                                         <ul class="sub-menu">
                                             <li class="menu-item"><a href="about-us.html">About Us</a></li>
                                             <li class="menu-item "><a href="contact.html">Contact</a></li>
@@ -168,6 +168,19 @@
                                                                     </div>
                                                                 </div>
                                                             </a>
+                                                            @if(auth()->user()->isAdmin)
+                                                                <a href="{{route("home")}}" class="iq-sub-card setting-dropdown">
+                                                                    <div class="media align-items-center">
+                                                                        <div class="right-icon">
+                                                                            <i class="ri-dashboard-fill text-primary"></i>
+                                                                        </div>
+                                                                        <div class="media-body ml-3">
+                                                                            <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">لوحة التحكم</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            @endif
+
                                                             <a href="setting.html" class="iq-sub-card setting-dropdown">
                                                                 <div class="media align-items-center">
                                                                     <div class="right-icon">
@@ -313,6 +326,18 @@
                                                             </div>
                                                         </div>
                                                     </a>
+                                                    @if(auth()->user()->isAdmin)
+                                                        <a href="{{route("home")}}" class="iq-sub-card setting-dropdown">
+                                                            <div class="media align-items-center">
+                                                                <div class="right-icon">
+                                                                    <i class="ri-dashboard-fill text-primary"></i>
+                                                                </div>
+                                                                <div class="media-body ml-3">
+                                                                    <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">لوحة التحكم</h6>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    @endif
                                                     <a href="setting.html" class="iq-sub-card setting-dropdown">
                                                         <div class="media align-items-center">
                                                             <div class="right-icon">

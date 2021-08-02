@@ -5,7 +5,7 @@
     <!-- Slider Start -->
     <section id="home" class="iq-main-slider p-0" style="font-family: Cairo">
         <div id="home-slider" class="slider m-0 p-0">
-            <div class="slide slick-bg s-bg-1">
+            <div class="slide slick-bg s-bg-1" style="background-image: url(https://y.yaqot.tv/upload/articles/4bfd68cf.jpg);">
                 <div class="container-fluid position-relative h-100">
                     <div class="slider-inner h-100">
                         <div class="row align-items-center  h-100">
@@ -16,7 +16,7 @@
                                     </div>
                                 </a>
                                 <h1 class="slider-text big-title title text-uppercase" data-animation-in="fadeInLeft"
-                                    data-delay-in="0.6">bushland</h1>
+                                    data-delay-in="0.6" style="font-family: {{__("home.font family")}};{{__("home.font weight")}}">هجمة مرتدة</h1>
 
                                 <div class="d-flex flex-wrap align-items-center fadeInLeft animated" data-animation-in="fadeInLeft" style="opacity: 1;">
                                     <div class="slider-ratting d-flex align-items-center mr-4 mt-2 mt-md-3">
@@ -40,8 +40,8 @@
                                         <span class="text-white ml-2">4.7(lmdb)</span>
                                     </div>
                                     <div class="d-flex align-items-center mt-2 mt-md-3">
-                                        <span class="badge badge-secondary p-2">18+</span>
-                                        <span class="ml-3">2 Seasons</span>
+                                        <span class="badge badge-secondary p-2">للكبار فقط +18</span>
+                                        <span class="ml-3">موسمين</span>
                                     </div>
                                 </div>
 
@@ -50,24 +50,23 @@
                               <span class="badge badge-secondary p-2">18+</span>
                               <span class="ml-3">2 Seasons</span>
                            </div> -->
-                                <p data-animation-in="fadeInUp" data-delay-in="1.2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                                    dummy text ever since the 1500s.
+                                <p data-animation-in="fadeInUp" data-delay-in="1.2">هجمة مرتدة هو مسلسل تلفزيوني مصري يُعرض في شهر رمضان لعام 2021، المسلسل مأخوذ عن أحد ملفات المخابرات العامة المصرية، بطولة أحمد عز وهند صبري وهشام سليم ومن تأليف باهر دويدار ومن إخراج أحمد علاء الديب.
                                 </p>
                                 <div class="trending-list" data-wp_object-in="fadeInUp" data-delay-in="1.2">
                                     <div class="text-primary title starring">
-                                        Starring: <span class="text-body">Karen Gilchrist, James Earl Jones</span>
+                                        {{__("home.starring")}} <span class="text-body">أحمد عز و هند صبري</span>
                                     </div>
                                     <div class="text-primary title genres">
-                                        Genres: <span class="text-body">Action</span>
+                                        {{__("home.genres")}} <span class="text-body">حركة</span>
                                     </div>
                                     <div class="text-primary title tag">
-                                        Tag: <span class="text-body">Action, Adventure, Horror</span>
+                                        {{__("home.tags")}} <span class="text-body">حركة و مغامرة</span>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center r-mb-23" data-animation-in="fadeInUp" data-delay-in="1.2">
                                     <a href="show-details.html" class="btn btn-hover iq-button"><i class="fa fa-play mr-2"
-                                                                                                   aria-hidden="true"></i>Play Now</a>
-                                    <a href="show-details.html" class="btn btn-link">More details</a>
+                                                                                                   aria-hidden="true"></i>{{__("home.play now")}}</a>
+                                    <a href="show-details.html" class="btn btn-link">{{__("home.more details")}}</a>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +81,7 @@
                                     <circle class='circle' fill="none" stroke-width="7" stroke-linecap="round"
                                             stroke-linejoin="round" stroke-miterlimit="10" cx="106.8" cy="106.8" r="103.3" />
                            </svg>
-                                <span class="w-trailor">Watch Trailer</span>
+                                <span class="w-trailor">{{__("home.watch trailer")}}</span>
                             </a>
                         </div>
                     </div>
