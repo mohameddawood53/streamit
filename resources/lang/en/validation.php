@@ -138,6 +138,11 @@ return [
         'terms' => [
             'required' => 'You have to read all the terms and conditions and accept to complete',
         ],
+        'lang' => [
+            'required' => 'The field preference language is required',
+            'not_in' => 'You must choose among the languages',
+
+        ],
     ],
 
     /*
@@ -151,6 +156,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        "img" => "الصورة"
+
+    ],
 
 ];

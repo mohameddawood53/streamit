@@ -17,5 +17,12 @@ return [
     "font weight" => 'font-weight: revert',
     "starring" => "الفنانين : ",
     "genres" => "نوع العمل : ",
-    "tags" => "الكلمات المفتاحية : "
+    "tags" => "الكلمات المفتاحية : ",
+    "Manage Profile"=>"إدارة ملفك الشخصي",
+    "save" => "حفظ",
+    "cancel" => "إغلاق",
+    "preference language" => "اللغة المفضلة",
+    "choose language" => "أختر لغتك المفضلة",
+    "dashboard" => "لوحة التحكم",
+    "update success" => "تم تعديل معلوماتك بنجاح"
 ];

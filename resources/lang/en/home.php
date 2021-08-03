@@ -17,6 +17,18 @@ return [
     "font weight" => 'font-weight: 500',
     "starring" => "Starring : ",
     "genres" => "Genres : ",
-    "tags" => "Tags : "
+    "tags" => "Tags : ",
+    "Manage Profile"=>"Manage Profile",
+    "save" => "Save",
+    "cancel" => "Cancel",
+    "preference language" => "Preference Language",
+    "choose language" => "Choose Your Preference Language",
+    "dashboard" => "Dashboard",
+    "update success" => "Your Data Updated Successfully"
+
+
+
+
+
 
 ];

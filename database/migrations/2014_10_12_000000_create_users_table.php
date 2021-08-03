@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->boolean("isAdmin")->default(false);
             $table->date("pck_start")->nullable();
             $table->date("pck_end")->nullable();
+            $table->string("img")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

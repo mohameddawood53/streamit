@@ -23,7 +23,9 @@ class User extends Authenticatable
         "package",
         "pck_start",
         "pck_end",
-        "phone"
+        "phone",
+        "lang",
+        "img"
     ];
 
     /**

@@ -152,13 +152,13 @@
                                             </li>
                                             <li>
                                                 <a href="#" class="iq-user-dropdown search-toggle d-flex align-items-center">
-                                                    <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle"
+                                                    <img src="@if(auth()->user()->img) {{asset("storage/" . auth()->user()->img)}} @else images/user/user.jpg @endif" class="img-fluid avatar-40 rounded-circle"
                                                          alt="user">
                                                 </a>
                                                 <div class="iq-sub-dropdown iq-user-dropdown" {{__("reg.direction")}}>
                                                     <div class="iq-card shadow-none m-0">
                                                         <div class="iq-card-body p-0 pl-3 pr-3">
-                                                            <a href="manage-profile.html" class="iq-sub-card setting-dropdown">
+                                                            <a href="/profile" class="iq-sub-card setting-dropdown">
                                                                 <div class="media align-items-center">
                                                                     <div class="right-icon">
                                                                         <i class="ri-file-user-line text-primary"></i>
@@ -175,7 +175,7 @@
                                                                             <i class="ri-dashboard-fill text-primary"></i>
                                                                         </div>
                                                                         <div class="media-body ml-3">
-                                                                            <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">لوحة التحكم</h6>
+                                                                            <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.dashboard")}}</h6>
                                                                         </div>
                                                                     </div>
                                                                 </a>
@@ -311,12 +311,12 @@
                                     <li class="nav-item nav-icon {{__("reg.float")}}" {{__("reg.direction")}}>
                                         <a href="#" class="iq-user-dropdown search-toggle p-0 d-flex align-items-center"
                                            data-toggle="search-toggle">
-                                            <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle" alt="user">
+                                            <img src="@if(auth()->user()->img) {{asset("storage/" . auth()->user()->img)}} @else images/user/user.jpg @endif" class="img-fluid avatar-40 rounded-circle" alt="user">
                                         </a>
                                         <div class="iq-sub-dropdown iq-user-dropdown">
                                             <div class="iq-card shadow-none m-0">
                                                 <div class="iq-card-body p-0 pl-3 pr-3">
-                                                    <a href="manage-profile.html" class="iq-sub-card setting-dropdown">
+                                                    <a href="/profile" class="iq-sub-card setting-dropdown">
                                                         <div class="media align-items-center">
                                                             <div class="right-icon">
                                                                 <i class="ri-file-user-line text-primary"></i>
@@ -333,7 +333,7 @@
                                                                     <i class="ri-dashboard-fill text-primary"></i>
                                                                 </div>
                                                                 <div class="media-body ml-3">
-                                                                    <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">لوحة التحكم</h6>
+                                                                    <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.dashboard")}}</h6>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -603,6 +603,7 @@
         </div>
     </div>
 </header>
+@include('sweetalert::alert')
 @yield("content")
 <footer id="contact" class="footer-one iq-bg-dark">
 
@@ -688,6 +689,33 @@
 <!-- Slick Animation-->
 <script src="{{asset("js/slick-animation.min.js")}}"></script>
 <!-- Custom JS-->
+<script src="{{asset("js/flatpickers.js")}}"></script>
 <script src="{{asset("js/custom.js")}}"></script>
+
+
+<div class="flatpickr-calendar animate" tabindex="-1"><div class="flatpickr-months"><span class="flatpickr-prev-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1"><option class="flatpickr-monthDropdown-month" value="0" tabindex="-1">January</option><option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">February</option><option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">March</option><option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">April</option><option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">May</option><option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">June</option><option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">July</option><option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">August</option><option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">September</option><option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">October</option><option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">November</option><option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">December</option></select><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year"><span class="arrowUp"></span><span class="arrowDown"></span></div></div></div><span class="flatpickr-next-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
+      <span class="flatpickr-weekday">
+        Sun</span><span class="flatpickr-weekday">Mon</span><span class="flatpickr-weekday">Tue</span><span class="flatpickr-weekday">Wed</span><span class="flatpickr-weekday">Thu</span><span class="flatpickr-weekday">Fri</span><span class="flatpickr-weekday">Sat
+      </span>
+                </div></div><div class="flatpickr-days" tabindex="-1"><div class="dayContainer"><span class="flatpickr-day " aria-label="August 1, 2021" tabindex="-1">1</span><span class="flatpickr-day today" aria-label="August 2, 2021" aria-current="date" tabindex="-1">2</span><span class="flatpickr-day " aria-label="August 3, 2021" tabindex="-1">3</span><span class="flatpickr-day " aria-label="August 4, 2021" tabindex="-1">4</span><span class="flatpickr-day " aria-label="August 5, 2021" tabindex="-1">5</span><span class="flatpickr-day " aria-label="August 6, 2021" tabindex="-1">6</span><span class="flatpickr-day " aria-label="August 7, 2021" tabindex="-1">7</span><span class="flatpickr-day " aria-label="August 8, 2021" tabindex="-1">8</span><span class="flatpickr-day " aria-label="August 9, 2021" tabindex="-1">9</span><span class="flatpickr-day " aria-label="August 10, 2021" tabindex="-1">10</span><span class="flatpickr-day " aria-label="August 11, 2021" tabindex="-1">11</span><span class="flatpickr-day " aria-label="August 12, 2021" tabindex="-1">12</span><span class="flatpickr-day " aria-label="August 13, 2021" tabindex="-1">13</span><span class="flatpickr-day " aria-label="August 14, 2021" tabindex="-1">14</span><span class="flatpickr-day " aria-label="August 15, 2021" tabindex="-1">15</span><span class="flatpickr-day " aria-label="August 16, 2021" tabindex="-1">16</span><span class="flatpickr-day " aria-label="August 17, 2021" tabindex="-1">17</span><span class="flatpickr-day " aria-label="August 18, 2021" tabindex="-1">18</span><span class="flatpickr-day " aria-label="August 19, 2021" tabindex="-1">19</span><span class="flatpickr-day " aria-label="August 20, 2021" tabindex="-1">20</span><span class="flatpickr-day " aria-label="August 21, 2021" tabindex="-1">21</span><span class="flatpickr-day " aria-label="August 22, 2021" tabindex="-1">22</span><span class="flatpickr-day " aria-label="August 23, 2021" tabindex="-1">23</span><span class="flatpickr-day " aria-label="August 24, 2021" tabindex="-1">24</span><span class="flatpickr-day " aria-label="August 25, 2021" tabindex="-1">25</span><span class="flatpickr-day " aria-label="August 26, 2021" tabindex="-1">26</span><span class="flatpickr-day " aria-label="August 27, 2021" tabindex="-1">27</span><span class="flatpickr-day " aria-label="August 28, 2021" tabindex="-1">28</span><span class="flatpickr-day " aria-label="August 29, 2021" tabindex="-1">29</span><span class="flatpickr-day " aria-label="August 30, 2021" tabindex="-1">30</span><span class="flatpickr-day " aria-label="August 31, 2021" tabindex="-1">31</span><span class="flatpickr-day nextMonthDay" aria-label="September 1, 2021" tabindex="-1">1</span><span class="flatpickr-day nextMonthDay" aria-label="September 2, 2021" tabindex="-1">2</span><span class="flatpickr-day nextMonthDay" aria-label="September 3, 2021" tabindex="-1">3</span><span class="flatpickr-day nextMonthDay" aria-label="September 4, 2021" tabindex="-1">4</span><span class="flatpickr-day nextMonthDay" aria-label="September 5, 2021" tabindex="-1">5</span><span class="flatpickr-day nextMonthDay" aria-label="September 6, 2021" tabindex="-1">6</span><span class="flatpickr-day nextMonthDay" aria-label="September 7, 2021" tabindex="-1">7</span><span class="flatpickr-day nextMonthDay" aria-label="September 8, 2021" tabindex="-1">8</span><span class="flatpickr-day nextMonthDay" aria-label="September 9, 2021" tabindex="-1">9</span><span class="flatpickr-day nextMonthDay" aria-label="September 10, 2021" tabindex="-1">10</span><span class="flatpickr-day nextMonthDay" aria-label="September 11, 2021" tabindex="-1">11</span></div></div></div></div></div>
+<script>mendeleyWebImporter = {
+        downloadPdfs(t,e) { return this._call('downloadPdfs', [t,e]); },
+        open() { return this._call('open', []); },
+        setLoginToken(t) { return this._call('setLoginToken', [t]); },
+        _call(methodName, methodArgs) {
+            const id = Math.random();
+            window.postMessage({ id, token: '0.6443686869826604', methodName, methodArgs }, 'https://templates.iqonic.design');
+            return new Promise(resolve => {
+                const listener = window.addEventListener('message', event => {
+                    const data = event.data;
+                    if (typeof data !== 'object' || !('result' in data) || data.id !== id) return;
+                    window.removeEventListener('message', listener);
+                    resolve(data.result);
+                });
+            });
+        }
+    };</script>
+
+
 </body>
 </html>
