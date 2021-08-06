@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('package');
+            $table->string('package')->nullable();
             $table->string("lang")->nullable();
             $table->boolean("isAdmin")->default(false);
             $table->date("pck_start")->nullable();

@@ -60,6 +60,10 @@ Route::group(["middleware" => "lang"], function (){
     Route::get('/pay', [App\Http\Controllers\FattorahPaymentController::class, 'payForSubscribe'])->name("pay")->middleware(["auth","payment"]);
     Route::get('/profile', [App\Http\Controllers\profile::class, 'index'])->middleware(["auth"]);
     Route::post('/profile', [App\Http\Controllers\profile::class, 'update'])->middleware(["auth"]);
+    Route::get('/settings', [App\Http\Controllers\settings::class, 'index'])->name("settings")->middleware(["auth"]);
+    Route::post('/signout/all', [App\Http\Controllers\settings::class, 'signout'])->name("devices")->middleware(["auth"]);
+    Route::get('/cancel/subscription', [App\Http\Controllers\settings::class, 'cancel'])->name("cancel")->middleware(["auth"]);
+    Route::post('/update/bundle', [App\Http\Controllers\settings::class, 'update'])->name("update")->middleware(["auth"]);
 
 });
 

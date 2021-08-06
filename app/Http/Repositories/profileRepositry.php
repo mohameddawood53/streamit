@@ -5,7 +5,6 @@ namespace App\Http\Repositories;
 
 
 use App\Http\Requests\updateUserProfileReq;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
 class profileRepositry

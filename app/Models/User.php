@@ -46,4 +46,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public const IS_YEARLY = 1;
+    public const IS_THREE_MONTH = 2;
+    public const IS_MONTHLY = 3;
 }

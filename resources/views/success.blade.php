@@ -28,12 +28,13 @@
                             </div>
                             <div class="mt-3">
                                 <div class="d-flex justify-content-center links" {{__("reg.direction")}}>
-                                    <form action="{{route("logout")}}" method="POST">
-                                        @csrf
-                                        <input type="submit" value="{{__("reg.logout")}}" class="text-primary ml-2" style="background: none; border: none;">
-                                        {{--                                        <button ></button>--}}
-                                        {{--                                        <a href="{{route("logout")}}" class="text-primary ml-2"> {{__("reg.logout")}}</a>--}}
-                                    </form>
+                                                                            <a href="/" class="text-primary ml-2"> {{__("home.home")}}</a>
+
+{{--                                    <form action="{{route("logout")}}" method="POST">--}}
+{{--                                        @csrf--}}
+{{--                                        <input type="submit" value="{{__("reg.logout")}}" class="text-primary ml-2" style="background: none; border: none;">--}}
+{{--                                        --}}{{--                                        <button ></button>--}}
+{{--                                    </form>--}}
                                 </div>
                             </div>
                         </div>

@@ -25,6 +25,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define("cancel-subscribtion" , function ($user){
+            return !empty($user->pck_start);
+        });
+        Gate::define("pay-subscribtion" , function ($user){
+            return empty($user->pck_start);
+        });
+
+
     }
 }

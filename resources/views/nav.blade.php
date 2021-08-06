@@ -181,7 +181,7 @@
                                                                 </a>
                                                             @endif
 
-                                                            <a href="setting.html" class="iq-sub-card setting-dropdown">
+                                                            <a href="{{route("settings")}}" class="iq-sub-card setting-dropdown">
                                                                 <div class="media align-items-center">
                                                                     <div class="right-icon">
                                                                         <i class="ri-settings-4-line text-primary"></i>
@@ -338,7 +338,7 @@
                                                             </div>
                                                         </a>
                                                     @endif
-                                                    <a href="setting.html" class="iq-sub-card setting-dropdown">
+                                                    <a href="{{route("settings")}}" class="iq-sub-card setting-dropdown">
                                                         <div class="media align-items-center">
                                                             <div class="right-icon">
                                                                 <i class="ri-settings-4-line text-primary"></i>
@@ -604,7 +604,10 @@
     </div>
 </header>
 @include('sweetalert::alert')
-@yield("content")
+<div id="app">
+    @yield("content")
+</div>
+
 <footer id="contact" class="footer-one iq-bg-dark">
 
     <!-- Address -->
@@ -672,6 +675,7 @@
 <div id="back-to-top">
     <a class="top" href="#top" id="top"> <i class="fa fa-angle-up"></i> </a>
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
 <!-- back-to-top End -->
 <!-- jQuery, Popper JS -->
 <script src="{{asset("js/jquery-3.4.1.min.js")}}"></script>
