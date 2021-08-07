@@ -50,4 +50,9 @@ class User extends Authenticatable
     public const IS_YEARLY = 1;
     public const IS_THREE_MONTH = 2;
     public const IS_MONTHLY = 3;
+
+    public function devices()
+    {
+        return $this->hasMany(Device::class);
+    }
 }

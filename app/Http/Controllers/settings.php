@@ -34,7 +34,6 @@ class settings extends Controller
 
     public function update(Request $request)
     {
-
         return $this->subcribtionRepositry->change(Auth::id(),$request->package);
     }
 }

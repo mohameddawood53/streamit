@@ -13,7 +13,6 @@ class subcribtionRepositry
         $user->pck_start = null;
         $user->pck_end = null;
         $user->save();
-
     }
 
     public function change($id, $package)
