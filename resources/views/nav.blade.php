@@ -191,16 +191,16 @@
                                                                     </div>
                                                                 </div>
                                                             </a>
-                                                            <a href="pricing-plan.html" class="iq-sub-card setting-dropdown">
-                                                                <div class="media align-items-center">
-                                                                    <div class="right-icon">
-                                                                        <i class="ri-settings-4-line text-primary"></i>
-                                                                    </div>
-                                                                    <div class="media-body ml-3">
-                                                                        <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.Pricing plan")}}</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
+{{--                                                            <a href="pricing-plan.html" class="iq-sub-card setting-dropdown">--}}
+{{--                                                                <div class="media align-items-center">--}}
+{{--                                                                    <div class="right-icon">--}}
+{{--                                                                        <i class="ri-settings-4-line text-primary"></i>--}}
+{{--                                                                    </div>--}}
+{{--                                                                    <div class="media-body ml-3">--}}
+{{--                                                                        <h6 class="mb-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.Pricing plan")}}</h6>--}}
+{{--                                                                    </div>--}}
+{{--                                                                </div>--}}
+{{--                                                            </a>--}}
                                                             <a href="login.html" class="iq-sub-card setting-dropdown">
                                                                 <div class="media align-items-center">
                                                                     <div class="right-icon">
@@ -348,16 +348,16 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                    <a href="pricing-plan.html" class="iq-sub-card setting-dropdown">
-                                                        <div class="media align-items-center">
-                                                            <div class="right-icon">
-                                                                <i class="ri-settings-4-line text-primary"></i>
-                                                            </div>
-                                                            <div class="media-body ml-3">
-                                                                <h6 class="my-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.Pricing plan")}}</h6>
-                                                            </div>
-                                                        </div>
-                                                    </a>
+{{--                                                    <a href="pricing-plan.html" class="iq-sub-card setting-dropdown">--}}
+{{--                                                        <div class="media align-items-center">--}}
+{{--                                                            <div class="right-icon">--}}
+{{--                                                                <i class="ri-settings-4-line text-primary"></i>--}}
+{{--                                                            </div>--}}
+{{--                                                            <div class="media-body ml-3">--}}
+{{--                                                                <h6 class="my-0 {{__("home.mx nav")}} {{__("reg.float")}}">{{__("home.Pricing plan")}}</h6>--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </a>--}}
                                                     <a href="login.html" class="iq-sub-card setting-dropdown">
                                                         <div class="media align-items-center">
                                                             <div class="right-icon">

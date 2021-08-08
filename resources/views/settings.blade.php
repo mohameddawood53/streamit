@@ -110,22 +110,24 @@
                             </form>
 
                         </div>
-                        <h5 class="mb-3 pb-3 mt-4 a-border">{{__("settings.log in activities")}}</h5>
-                        <div class="row text-center" >
-                            <div class="col-12 setting">
-                                <div class="text-center">
+                        @if(!empty($devices->type))
+                            <h5 class="mb-3 pb-3 mt-4 a-border">{{__("settings.log in activities")}}</h5>
+                            <div class="row text-center" >
+                                <div class="col-12 setting">
+                                    <div class="text-center">
 
-                                    @foreach($devices as $device)
-                                        <div class="row">
-                                            {{__("settings.the account has been logged in from browser")}}
-                                            ({{$device->browser}}) {{$device->updated_at->diffForHumans()}}
-                                        </div>
-                                    @endforeach
+                                        @foreach($devices as $device)
+                                            <div class="row">
+                                                {{__("settings.the account has been logged in from browser")}}
+                                                ({{$device->browser}}) {{$device->updated_at->diffForHumans()}}
+                                            </div>
+                                        @endforeach
+
+                                    </div>
 
                                 </div>
-
                             </div>
-                        </div>
+                        @endif
                         <h5 class="mb-3 pb-3 mt-4 a-border">{{__("settings.settings")}}</h5>
                         <div class="row" {{__("reg.direction")}}>
                             <div class="col-12 setting">
