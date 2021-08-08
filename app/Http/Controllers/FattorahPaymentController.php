@@ -68,6 +68,7 @@ class FattorahPaymentController extends Controller
                 return $this->fatoorahRepository->subscribe($response);
 
             }else{
+//                dd($response);
                 return redirect()->to("/error");
             }
 

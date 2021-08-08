@@ -64,6 +64,7 @@ Route::group(["middleware" => "lang"], function (){
     Route::post('/signout/all', [App\Http\Controllers\settings::class, 'signout'])->name("devices")->middleware(["auth"]);
     Route::get('/cancel/subscription', [App\Http\Controllers\settings::class, 'cancel'])->name("cancel")->middleware(["auth"]);
     Route::post('/update/bundle', [App\Http\Controllers\settings::class, 'update'])->name("update")->middleware(["auth"]);
+    Route::post('/update/password', [App\Http\Controllers\settings::class, 'updatePass'])->middleware(["auth"]);
 
 });
 

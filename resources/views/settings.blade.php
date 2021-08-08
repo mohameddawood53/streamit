@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="sign-user_card">
-                        <h5 class="mb-3 pb-3 a-border text-center">{{__("settings.personal details")}}
+                        <h5 class="mb-3 pb-3 a-border">{{__("settings.personal details")}}
                             <div class="col-md-4 text-md-right text-left">
                                 <a href="/profile" class="text-primary">{{__("settings.change")}}</a>
                             </div>
@@ -33,6 +33,11 @@
                                 <span class="text-light font-size-13">{{__("reg.password")}}</span>
                                 <p class="mb-0">**********</p>
                             </div>
+                            <form action="/update/password" method="post">
+                                @csrf
+                                <update-password changing="{{__("settings.change")}}" cancal="{{__("settings.cancel")}}" passlang="{{__("settings.new pass")}}"></update-password>
+
+                            </form>
 {{--                            <div class="col-md-4 text-md-right text-left">--}}
 {{--                                <a href="#" class="text-primary">Change</a>--}}
 {{--                            </div>--}}
@@ -61,7 +66,7 @@
     {{--                                <a href="#" class="text-primary">Change</a>--}}
     {{--                            </div>--}}
                         </div>
-                            <h5 class="mb-3 mt-4 pb-3 a-border text-center">{{__("settings.billing details")}}</h5>
+                            <h5 class="mb-3 mt-4 pb-3 a-border ">{{__("settings.billing details")}}</h5>
                         @can("cancel-subscribtion")
                         <div class="row justify-content-between mb-3">
                                 <div class="col-md-8 r-mb-15">
@@ -85,7 +90,7 @@
                             </div>
                         @endcan
 
-                        <h5 class="mb-3 mt-4 pb-3 a-border text-center">{{__("settings.plan details")}}</h5>
+                        <h5 class="mb-3 mt-4 pb-3 a-border">{{__("settings.plan details")}}</h5>
                         <div class="row justify-content-between mb-3">
                             <div class="col-md-8">
                                 <p>
@@ -105,17 +110,35 @@
                             </form>
 
                         </div>
-                        <h5 class="mb-3 pb-3 mt-4 a-border">Setting</h5>
+                        <h5 class="mb-3 pb-3 mt-4 a-border">{{__("settings.log in activities")}}</h5>
+                        <div class="row text-center" >
+                            <div class="col-12 setting">
+                                <div class="text-center">
+
+                                    @foreach($devices as $device)
+                                        <div class="row">
+                                            {{__("settings.the account has been logged in from browser")}}
+                                            ({{$device->browser}}) {{$device->updated_at->diffForHumans()}}
+                                        </div>
+                                    @endforeach
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <h5 class="mb-3 pb-3 mt-4 a-border">{{__("settings.settings")}}</h5>
                         <div class="row" {{__("reg.direction")}}>
                             <div class="col-12 setting">
-                                <a href="#" class="text-body d-block mb-1">Recent device streaming activity</a>
+                                <div class="text-center">
+
+                                </div>
                                 <form action="/signout/all" method="post">
                                     @csrf
                                     <signout-devices logout="{{__("settings.logout of all devices")}}" passLang="{{__("reg.password")}}" cancal="{{__("settings.cancel")}}"></signout-devices>
                                 </form>
 
 {{--                                <a href="/signout/all" class="text-body d-block mb-1">Sign out of all devices </a>--}}
-                                <a href="#" class="text-body d-block">Download your person information</a>
+{{--                                <a href="#" class="text-body d-block">Download your person information</a>--}}
                             </div>
                         </div>
                     </div>

@@ -48,6 +48,7 @@
                                         </span>
                                             @enderror
                                         </div>
+
 {{--                                        <div class="form-group">--}}
 {{--                                            <input type="text" class="form-control date-input basicFlatpickr mb-0 flatpickr-input" placeholder="Select Date" id="exampleInputPassword2" required="" readonly="readonly">--}}
 {{--                                        </div>--}}

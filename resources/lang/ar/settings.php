@@ -12,6 +12,15 @@ return [
     "cancel" => "إغلاق",
     "pay now" => "جدد أشتراكك الآن",
     "plan details" => "معلومات الباقة",
-    "please select on package from list" => "برجاء إختيار أحدي الباقات"
+    "please select on package from list" => "برجاء إختيار أحدي الباقات",
+    "the account has been logged in from browser" => "تم تسجيل الدخول من متصفح ",
+    "computer" => "كمبيوتر",
+    "mobile" => "تليفون محمول",
+    "tablet" => "جهاز لوحي",
+    "log in activities" => "عمليات تسجيل الدخول",
+    "settings" => "الإعدادات",
+    "new pass" => "كلمة المرور الجديدة",
+    "password identical" => "كلمة المرور متطابقة مع كلمة المرور القديمة"
+
 
 ];
