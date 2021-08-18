@@ -70,5 +70,19 @@ Route::group(["middleware" => "lang"], function (){
     Route::get('/cancel/subscription', [App\Http\Controllers\settings::class, 'cancel'])->name("cancel")->middleware(["auth"]);
     Route::post('/update/bundle', [App\Http\Controllers\settings::class, 'update'])->name("update")->middleware(["auth"]);
     Route::post('/update/password', [App\Http\Controllers\settings::class, 'updatePass'])->middleware(["auth"]);
+//    Route::get("/errorsview" , function (){
+//        return abort(500);
+//    });
+});
+
+
+Route::get("role" , function (){
+    $trans = [
+        "ar" => "محرر",
+        "en" => "Editor"
+    ];
+    $role = new \App\Models\roles();
+    $role->setTranslations("role", $trans);
+    $role->save();
 });
 

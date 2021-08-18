@@ -25,7 +25,8 @@ class User extends Authenticatable
         "pck_end",
         "phone",
         "lang",
-        "img"
+        "img",
+        "role"
     ];
 
     /**
@@ -50,9 +51,17 @@ class User extends Authenticatable
     public const IS_YEARLY = 1;
     public const IS_THREE_MONTH = 2;
     public const IS_MONTHLY = 3;
+    public const IS_ADMIN = 1;
+    public const IS_User = 2;
+    public const IS_EDITOR = 3;
 
     public function devices()
     {
         return $this->hasMany(Device::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(roles::class);
     }
 }

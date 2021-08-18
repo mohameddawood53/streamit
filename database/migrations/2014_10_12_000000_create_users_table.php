@@ -13,6 +13,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+//        Schema::create("roles" , function (Blueprint $table){
+//            $table->id();
+//            $table->string("role");
+//            $table->timestamps();
+//        });
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -22,13 +27,16 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('package')->nullable();
             $table->string("lang")->nullable();
-            $table->boolean("isAdmin")->default(false);
             $table->date("pck_start")->nullable();
             $table->date("pck_end")->nullable();
             $table->string("img")->nullable();
+//            $table->unsignedBigInteger("roles_id")->default("2");
             $table->rememberToken();
             $table->timestamps();
+//            $table->foreignId("role_id")->references("id")->on("roles")->cascadeOnDelete();
+
         });
+
     }
 
     /**

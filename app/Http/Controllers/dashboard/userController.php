@@ -10,7 +10,8 @@ class userController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        return view("dashboard.users", ["users" => $users]);
+        $users = User::get()->all();
+
+        return view("dashboard.users")->with("users" , $users);
     }
 }
