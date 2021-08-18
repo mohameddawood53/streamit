@@ -24,7 +24,10 @@ return [
     "preference language" => "Preference Language",
     "choose language" => "Choose Your Preference Language",
     "dashboard" => "Dashboard",
-    "update success" => "Your Data Updated Successfully"
+    "update success" => "Your Data Updated Successfully",
+    "dir" => "ltr",
+    "typo" => "typography"
+
 
 
 

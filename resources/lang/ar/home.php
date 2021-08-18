@@ -24,5 +24,8 @@ return [
     "preference language" => "اللغة المفضلة",
     "choose language" => "أختر لغتك المفضلة",
     "dashboard" => "لوحة التحكم",
-    "update success" => "تم تعديل معلوماتك بنجاح"
+    "update success" => "تم تعديل معلوماتك بنجاح",
+    "dir" => "rtl",
+    "typo" => "typography-rtl"
+
 ];

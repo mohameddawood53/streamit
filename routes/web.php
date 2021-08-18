@@ -54,7 +54,12 @@ Route::group(["middleware" => "lang"], function (){
 
     Auth::routes();
 
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(["admin", "auth"]);
+    Route::prefix("/dashboard")->group(function(){
+        Route::middleware(["auth", "admin"])->group(function (){
+            Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+            Route::get('/users', [App\Http\Controllers\dashboard\userController::class, 'index'])->name('dashboard.users');
+        });
+    });
     Route::get('/callback', [App\Http\Controllers\FattorahPaymentController::class, 'callback'])->middleware(["auth","payment"]);
     Route::get('/error', [App\Http\Controllers\FattorahPaymentController::class, 'error'])->middleware(["auth"]);
     Route::get('/pay', [App\Http\Controllers\FattorahPaymentController::class, 'payForSubscribe'])->name("pay")->middleware(["auth","payment"]);
@@ -65,6 +70,5 @@ Route::group(["middleware" => "lang"], function (){
     Route::get('/cancel/subscription', [App\Http\Controllers\settings::class, 'cancel'])->name("cancel")->middleware(["auth"]);
     Route::post('/update/bundle', [App\Http\Controllers\settings::class, 'update'])->name("update")->middleware(["auth"]);
     Route::post('/update/password', [App\Http\Controllers\settings::class, 'updatePass'])->middleware(["auth"]);
-
 });
 
