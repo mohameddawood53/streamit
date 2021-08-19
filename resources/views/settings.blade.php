@@ -110,7 +110,8 @@
                             </form>
 
                         </div>
-                        @if(!empty($devices->type))
+
+                        @if($devices->count() > 0)
                             <h5 class="mb-3 pb-3 mt-4 a-border">{{__("settings.log in activities")}}</h5>
                             <div class="row text-center" >
                                 <div class="col-12 setting">

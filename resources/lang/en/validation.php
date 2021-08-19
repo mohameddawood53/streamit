@@ -143,6 +143,9 @@ return [
             'not_in' => 'You must choose among the languages',
 
         ],
+        'password' => [
+            "regex" => "Password is weak, Should have at least 1 lowercase AND 1 uppercase AND 1 number."
+        ],
     ],
 
     /*
@@ -157,7 +160,8 @@ return [
     */
 
     'attributes' => [
-        "img" => "الصورة"
+        "img" => "الصورة",
+        "role_id" => "role"
 
     ],
 

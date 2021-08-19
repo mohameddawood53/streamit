@@ -15,9 +15,14 @@ class userPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAdd(User $user)
     {
-        //
+        return $user->role_id == User::IS_ADMIN;
+    }
+
+    public function viewDash(User $user)
+    {
+        return in_array($user->role_id, [User::IS_ADMIN, User::IS_EDITOR]);
     }
 
     /**
@@ -40,7 +45,7 @@ class userPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->role_id == User::IS_ADMIN;
     }
 
     /**
@@ -91,4 +96,7 @@ class userPolicy
     {
         //
     }
+
+
+
 }

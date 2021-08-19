@@ -168,7 +168,7 @@
                                                                     </div>
                                                                 </div>
                                                             </a>
-                                                            @if(auth()->user()->isAdmin)
+                                                            @can("viewDash" , \App\Models\User::class)
                                                                 <a href="{{route("home")}}" class="iq-sub-card setting-dropdown">
                                                                     <div class="media align-items-center">
                                                                         <div class="right-icon">
@@ -179,7 +179,8 @@
                                                                         </div>
                                                                     </div>
                                                                 </a>
-                                                            @endif
+                                                            @endcan
+
 
                                                             <a href="{{route("settings")}}" class="iq-sub-card setting-dropdown">
                                                                 <div class="media align-items-center">
@@ -201,7 +202,7 @@
 {{--                                                                    </div>--}}
 {{--                                                                </div>--}}
 {{--                                                            </a>--}}
-                                                            <a href="login.html" class="iq-sub-card setting-dropdown">
+                                                            <a class="iq-sub-card setting-dropdown">
                                                                 <div class="media align-items-center">
                                                                     <div class="right-icon">
                                                                         <i class="ri-logout-circle-line text-primary"></i>
@@ -326,7 +327,7 @@
                                                             </div>
                                                         </div>
                                                     </a>
-                                                    @if(auth()->user()->isAdmin)
+                                                    @can("viewDash" , \App\Models\User::class)
                                                         <a href="{{route("home")}}" class="iq-sub-card setting-dropdown">
                                                             <div class="media align-items-center">
                                                                 <div class="right-icon">
@@ -337,7 +338,7 @@
                                                                 </div>
                                                             </div>
                                                         </a>
-                                                    @endif
+                                                    @endcan
                                                     <a href="{{route("settings")}}" class="iq-sub-card setting-dropdown">
                                                         <div class="media align-items-center">
                                                             <div class="right-icon">
@@ -358,7 +359,7 @@
 {{--                                                            </div>--}}
 {{--                                                        </div>--}}
 {{--                                                    </a>--}}
-                                                    <a href="login.html" class="iq-sub-card setting-dropdown">
+                                                    <a class="iq-sub-card setting-dropdown">
                                                         <div class="media align-items-center">
                                                             <div class="right-icon">
                                                                 <i class="ri-logout-circle-line text-primary"></i>

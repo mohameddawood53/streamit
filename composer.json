@@ -12,6 +12,7 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "proengsoft/laravel-jsvalidation": "^4.4",
         "realrashid/sweet-alert": "^4.0",
         "spatie/laravel-translatable": "^4.6"
     },

@@ -54,12 +54,19 @@ Route::group(["middleware" => "lang"], function (){
 
     Auth::routes();
 
+
+    // dashboard
     Route::prefix("/dashboard")->group(function(){
         Route::middleware(["auth", "admin"])->group(function (){
             Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
             Route::get('/users', [App\Http\Controllers\dashboard\userController::class, 'index'])->name('dashboard.users');
+            Route::get('/users/add', [App\Http\Controllers\dashboard\userController::class, 'add'])->name('dashboard.users.add');
+            Route::post('/users/add', [App\Http\Controllers\dashboard\userController::class, 'store'])->name('dashboard.users.store');
+            Route::get('/users/delete/{id}', [App\Http\Controllers\dashboard\userController::class, 'delete'])->name('dashboard.users.delete');
         });
     });
+
+
     Route::get('/callback', [App\Http\Controllers\FattorahPaymentController::class, 'callback'])->middleware(["auth","payment"]);
     Route::get('/error', [App\Http\Controllers\FattorahPaymentController::class, 'error'])->middleware(["auth"]);
     Route::get('/pay', [App\Http\Controllers\FattorahPaymentController::class, 'payForSubscribe'])->name("pay")->middleware(["auth","payment"]);
