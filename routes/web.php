@@ -63,6 +63,8 @@ Route::group(["middleware" => "lang"], function (){
             Route::get('/users/add', [App\Http\Controllers\dashboard\userController::class, 'add'])->name('dashboard.users.add');
             Route::post('/users/add', [App\Http\Controllers\dashboard\userController::class, 'store'])->name('dashboard.users.store');
             Route::get('/users/delete/{id}', [App\Http\Controllers\dashboard\userController::class, 'delete'])->name('dashboard.users.delete');
+            Route::get('/users/edit/{user}', [App\Http\Controllers\dashboard\userController::class, 'edit'])->name('dashboard.users.edit');
+            Route::post('/users/update/{user}', [App\Http\Controllers\dashboard\userController::class, 'update'])->name('dashboard.users.update');
         });
     });
 

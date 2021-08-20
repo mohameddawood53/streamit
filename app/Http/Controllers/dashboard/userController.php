@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\addUser;
+use App\Http\Requests\editUser;
 use App\Models\roles;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -49,6 +50,27 @@ class userController extends Controller
         $user->delete();
 
         toast(__("dashboard.success delete"), "success");
+        return redirect()->to(route("dashboard.users"));
+    }
+
+    public function edit(User $user)
+    {
+        $this->authorize("update" , $user);
+        return view("dashboard.edituser" , ["user" => $user, "roles" => roles::all()]);
+    }
+
+    public function update(editUser $request, User $user)
+    {
+        $this->authorize("update", $user);
+        $user->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "password" => bcrypt($request->password),
+            "package" => $request->package,
+            "lang" => $request->lang,
+            "role_id" => $request->role_id
+        ]);
         return redirect()->to(route("dashboard.users"));
     }
 

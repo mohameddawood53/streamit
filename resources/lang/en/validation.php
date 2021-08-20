@@ -146,6 +146,9 @@ return [
         'password' => [
             "regex" => "Password is weak, Should have at least 1 lowercase AND 1 uppercase AND 1 number."
         ],
+        'name' => [
+            "regex" => "Please, enter your real name!"
+        ],
     ],
 
     /*
