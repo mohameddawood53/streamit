@@ -164,7 +164,13 @@ return [
 
     'attributes' => [
         "img" => "الصورة",
-        "role_id" => "role"
+        "role_id" => "role",
+        "main" => "Main Categories",
+        "sub" => "Sub Categories",
+        "type" => "Type",
+        "name_ar" => "Name in arabic",
+        "name_en" => "Name in english"
+
 
     ],
 

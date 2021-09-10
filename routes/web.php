@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\payment\paymentMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,12 +61,32 @@ Route::group(["middleware" => "lang"], function (){
     Route::prefix("/dashboard")->group(function(){
         Route::middleware(["auth", "admin"])->group(function (){
             Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-            Route::get('/users', [App\Http\Controllers\dashboard\userController::class, 'index'])->name('dashboard.users');
-            Route::get('/users/add', [App\Http\Controllers\dashboard\userController::class, 'add'])->name('dashboard.users.add');
-            Route::post('/users/add', [App\Http\Controllers\dashboard\userController::class, 'store'])->name('dashboard.users.store');
-            Route::get('/users/delete/{id}', [App\Http\Controllers\dashboard\userController::class, 'delete'])->name('dashboard.users.delete');
-            Route::get('/users/edit/{user}', [App\Http\Controllers\dashboard\userController::class, 'edit'])->name('dashboard.users.edit');
-            Route::post('/users/update/{user}', [App\Http\Controllers\dashboard\userController::class, 'update'])->name('dashboard.users.update');
+            // dashboead users routes
+            Route::prefix("users")->group(function (){
+                Route::get('/', [App\Http\Controllers\dashboard\userController::class, 'index'])->name('dashboard.users');
+                Route::get('/add', [App\Http\Controllers\dashboard\userController::class, 'add'])->name('dashboard.users.add');
+                Route::post('/add', [App\Http\Controllers\dashboard\userController::class, 'store'])->name('dashboard.users.store');
+                Route::get('/delete/{id}', [App\Http\Controllers\dashboard\userController::class, 'delete'])->name('dashboard.users.delete');
+                Route::get('/edit/{user}', [App\Http\Controllers\dashboard\userController::class, 'edit'])->name('dashboard.users.edit');
+                Route::post('/update/{user}', [App\Http\Controllers\dashboard\userController::class, 'update'])->name('dashboard.users.update');
+            });
+
+            // dashboard categories routes
+
+            Route::prefix("categories")->group(function (){
+                Route::get("/" , [App\Http\Controllers\dashboard\CategoryController::class , "index"])->name("categories.index");
+                Route::get("/add" , [App\Http\Controllers\dashboard\CategoryController::class , "add"])->name("categories.add");
+                Route::post("/add" , [App\Http\Controllers\dashboard\CategoryController::class , "store"])->name("categories.store");
+                Route::get("/delete/{category}" , [App\Http\Controllers\dashboard\CategoryController::class , "destroy"])->name("categories.destroy");
+                Route::get("/edit/{category}" , [App\Http\Controllers\dashboard\CategoryController::class , "edit"])->name("categories.edit");
+                Route::post("/edit/{category}" , [App\Http\Controllers\dashboard\CategoryController::class , "update"])->name("categories.update");
+            });
+
+            Route::prefix("language")->group(function (){
+                Route::get("/" , [App\Http\Controllers\dashboard\moviesController::class , "index"])->name("language.index");
+                Route::get("/add" , [App\Http\Controllers\dashboard\moviesController::class , "add"])->name("language.add");
+            });
+
         });
     });
 
@@ -85,13 +107,29 @@ Route::group(["middleware" => "lang"], function (){
 });
 
 
-Route::get("role" , function (){
-    $trans = [
-        "ar" => "محرر",
-        "en" => "Editor"
-    ];
-    $role = new \App\Models\roles();
-    $role->setTranslations("role", $trans);
-    $role->save();
-});
+//Route::get("role" , function (){
+//    $trans = [
+//        "ar" => "محرر",
+//        "en" => "Editor"
+//    ];
+//    $role = new \App\Models\roles();
+//    $role->setTranslations("role", $trans);
+//    $role->save();
+//});
+
+//Route::get("cat" , function (){
+//    $trans = [
+//        "ar" => "مسلسلات",
+//        "en" => "Series"
+//    ];
+//
+//    $cat = new \App\Models\Category();
+//    $cat->setTranslations("name" , $trans);
+//    $cat->save();
+//});
+
+//Route::get("/mail" , function (){
+//   return Mail::to(\auth()->user()->email)->send(new paymentMail(\auth()->user()->pck_end ,  auth()->user()->name));
+////    return new \App\Mail\payment\paymentMail("12-12-2333");
+//});
 

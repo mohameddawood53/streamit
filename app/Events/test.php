@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -15,6 +16,7 @@ class test implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $message;
     public $id;
+    public $user;
     /**
      * Create a new event instance.
      *
@@ -24,6 +26,7 @@ class test implements ShouldBroadcast
     {
         $this->message = $message;
         $this->id = $id;
+        $this->user = User::find($id);
     }
 
     /**
@@ -33,6 +36,7 @@ class test implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+
         return new PrivateChannel('home.' . $this->id);
     }
 }

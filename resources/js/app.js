@@ -5,7 +5,6 @@
  */
 
 require('./bootstrap');
-
 window.Vue = require('vue').default;
 
 /**
@@ -23,6 +22,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('signout-devices', require('./components/signoutDevices.vue').default);
 Vue.component('update-bundle', require('./components/updateBundle.vue').default);
 Vue.component('update-password', require('./components/updatePass.vue').default);
+Vue.component('add-category', require('./components/addCategory.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,4 +32,22 @@ Vue.component('update-password', require('./components/updatePass.vue').default)
 
 const app = new Vue({
     el: '#app',
+    data(){
+        return {
+            notifications : [],
+
+
+        }
+    },
+    created() {
+        var id = document.getElementById("user_id_not").value;
+        Echo.private("home." + id).listen("test", (e)=>{
+            this.notifications.push(e);
+            console.log(this.notifications)
+        });
+    }
+
 });
+
+
+

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repositories\FatoorahRepository;
+use App\Mail\payment\paymentMail;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FattorahPaymentController extends Controller
 {
@@ -65,6 +67,7 @@ class FattorahPaymentController extends Controller
 
             if($response['IsSuccess'])
             {
+                Mail::to(\auth()->user()->email)->send(new paymentMail(\auth()->user()->pck_end));
                 return $this->fatoorahRepository->subscribe($response);
 
             }else{
